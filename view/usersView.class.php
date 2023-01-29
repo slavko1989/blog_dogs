@@ -10,6 +10,12 @@ class UserView extends UserController{
 	public function view_users(){
 		return $this->select_users();
 	}
+	public function execute_users(){
+		if(isset($_GET["del_user"])){
+			$this->delete_users($_GET["del_user"]);
+		}
+	}
+
 	public function executeUsers(){
 	if($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["add_user"])){
 		if($this->pass()!=$this->cnf_pass()){

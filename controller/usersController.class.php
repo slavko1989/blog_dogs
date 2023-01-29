@@ -7,9 +7,14 @@ class UserController extends PostModel{
 	}
 
 	public function select_users(){
-
 		$this->query("select * from users");
 		return $this->fetch();
+	}
+
+	public function delete_users($id){
+			$this->query("delete from users where user_id=:user_id");
+			$this->bind(":user_id",$id);
+			return $this->execute();
 	}
 	public function prepareUsers($create){
 		$this->query("insert into users(u_name,u_email,u_pass,u_img)

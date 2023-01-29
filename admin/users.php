@@ -21,6 +21,7 @@ $users = new UserView();
     </thead>
     <tbody>
       <?php
+      $users->execute_users();
       $u = $users->view_users();
       if(is_array($u) or is_object($u)){
       foreach($u as $user){
@@ -29,7 +30,7 @@ $users = new UserView();
         <td><img src="../../../php_projects/blog/images/user_images/<?php echo $user->u_img; ?>" alt="" style="width: 60px;"></td>
         <td><?php echo $user->u_name; ?></td>
         <td><?php echo $user->u_email; ?></td>
-        <td><a href=""><i class="bi bi-calendar-x-fill"></i></a> <a href=""><i class="bi bi-pen-fill"></i></a></td>
+        <td><a href="../../../php_projects/blog/admin/users.php?del_user=<?php echo $user->user_id; ?>"><i class="bi bi-calendar-x-fill"></i></a> <a href=""><i class="bi bi-pen-fill"></i></a></td>
       </tr>
     <?php } }?>
     </tbody>
