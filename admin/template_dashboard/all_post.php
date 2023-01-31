@@ -24,7 +24,7 @@
     <?php } }?>
   </div>
   
-  
+   
 
   <!-- Pagination -->
   <div class="w3-center w3-padding-32">

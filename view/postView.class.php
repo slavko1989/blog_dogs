@@ -12,13 +12,19 @@ class PostView extends PostController{
 	}
 	
 	public function selectBlogPost(){
-		if($this->selectPostsPrepare()){
-		return $this->selectPostsPrepare();
-	}else{
-		 echo "nothing to show";
+		$num_per_page = 03;
+		if(isset($_GET["page"])){
+			$page = $_GET["page"];
+		
+		}else{
+			$page = 1;
 		}
+		$start = ($page-1)*3;
+		return $this->selectPostsPrepare($start,$num_per_page);
 	}
-
+	public function pag(){
+		return $this->pagination_select();
+	}
 	public function view_single_post(){
 		if(isset($_GET["view_more"])){
 			return $this->single_post($_GET["view_more"]);
@@ -60,6 +66,11 @@ class PostView extends PostController{
 	}
 	public function list_the_stars($id){
 		return $this->avg_stars($id);
+	}
+	public function create_live_search(){
+		if(isset($_POST['input'])){
+			 return $this->live_search($_POST['input']);
+		}
 	}
 }
 
