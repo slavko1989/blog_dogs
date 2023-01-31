@@ -78,11 +78,22 @@ class PostController extends PostModel{
 		}
 	}
 
-	public function selectPostsPrepare(){
-		$this->query("select * from posts");
-		return $this->fetch();
-		
+	public function selectPostsPrepare($a,$b){
+		$this->query("select * from posts limit $a,$b");
+		return $this->fetch();	
 	}
+public function pagination_select(){
+	$num_per_page = 03;
+	$stmt = $this->connect()->prepare("select * from posts");
+	$stmt->execute();
+	$total = $stmt->rowCount();
+	$total_pages=ceil($total/$num_per_page);
+	for($i = 1;$i<=$total_pages;$i++){
+	echo "<a  class='w3-bar-item w3-button w3-hover-black'  href='../../../php_projects/blog/index.php?page=".$i."'>".$i."</a>" ;
+}
+
+}
+
 	public function single_post($id){
 		$this->query("select * from posts where post_id=:post_id");
 		$this->bind("post_id",$id);
@@ -156,6 +167,10 @@ class PostController extends PostModel{
 		inner join posts on raitings.post_id = posts.post_id
 		 where posts.post_id=:post_id order by avg desc");
 		$this->bind(":post_id",$id);
+		return $this->fetch();
+	}
+	public function live_search($search){
+		$this->query("select * from posts where name_post like '{$search}%'");
 		return $this->fetch();
 	}
 }
