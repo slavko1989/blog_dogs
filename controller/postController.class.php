@@ -82,7 +82,13 @@ class PostController extends PostModel{
 		$this->query("select * from posts limit $a,$b");
 		return $this->fetch();	
 	}
-public function pagination_select(){
+
+	public function selectPostsInAdminPanel(){
+		$this->query("select * from posts");
+		return $this->fetch();	
+	}
+
+	public function pagination_select(){
 	$num_per_page = 03;
 	$stmt = $this->connect()->prepare("select * from posts");
 	$stmt->execute();

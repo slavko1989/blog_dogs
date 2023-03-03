@@ -27,7 +27,12 @@ class UserView extends UserController{
 	}
 	public function loginUsers(){
 		if($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["login_users"])){
-			return $this->log($this->email(),$this->pass());
+				if(empty($this->email()) or empty($this->pass())){
+					echo "Please text your email and password";
+				}else{
+					$this->log($this->email(),$this->pass());
+					$this->redirectToPage();
+				}
 		}
 	}
 	public function session_logout(){

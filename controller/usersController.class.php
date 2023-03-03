@@ -5,12 +5,10 @@ class UserController extends PostModel{
 	public function __construct(){
 		parent::__construct();
 	}
-
 	public function select_users(){
 		$this->query("select * from users");
 		return $this->fetch();
 	}
-
 	public function delete_users($id){
 			$this->query("delete from users where user_id=:user_id");
 			$this->bind(":user_id",$id);
@@ -46,8 +44,6 @@ class UserController extends PostModel{
 			$this->img_upload();
 			}
 	}
-
-
 	public function img_upload(){
 		$errors = array();
 		$file = $this->img();
@@ -70,7 +66,7 @@ class UserController extends PostModel{
 		}
 	}
 	public function create(){
-		//$hash = password_hash($this->pass(), PASSWORD_DEFAULT);
+		$hash = password_hash($this->pass(), PASSWORD_DEFAULT);
 		$create_u=array(
 			"u_name"=>$this->name(),
 			"u_email"=>$this->email(),
@@ -81,35 +77,46 @@ class UserController extends PostModel{
 		return $this->prepareUsers($create_u);
 		}
 	}
-public function log($email,$pass){
-		$stmt = $this->connect()->prepare("select * from users where u_email=:u_email and u_pass=:u_pass");
+	public function log($email,$pass){
+		$stmt = $this->connect()->prepare("select * from users where u_email=:u_email and u_pass=:u_pass limit 1");
 		$stmt->bindValue(":u_email",$email);
 		$stmt->bindValue(":u_pass",$pass);
 		$stmt->execute();
 		if($stmt->rowCount()==0){
-				echo "Your are not sign in,try again";
-				}else{
+				echo "Your are not sign in,try again<br>";
+				echo "Password or email is incorrect";
+		}else{
 		$result = $stmt->fetch(PDO::FETCH_ASSOC);
 		//if(password_verify($this->pass(), $result['u_pass'])){
+		
 		$_SESSION['user_name'] = $result['u_name'];
 		$_SESSION['user_email'] = $result['u_email'];
 		$_SESSION['user_id'] = $result['user_id'];
 		$_SESSION['admin'] = $result['u_type'];
 		$_SESSION['user_name'] = $result['u_name'];
 		$_SESSION['img'] = $result['u_img'];
+			/*}else{
+				echo "password verify doesn't recognize pass hash";
+			}*/
+		}
+	}
+
+	public function redirectToPage(){
 		if($_SESSION['admin']  == '1'){
 			header("location:../../../php_projects/blog/admin/index.php");
 			}else{
 			header("location:../../../php_projects/blog/index.php");
-				}
-		}
-	//}
-}
+			}
+	}
+
+	public function password_vrf($x,$y){
+		return password_verify($x,$y);
+	}
+
 	public function logout(){
 		session_unset();
 		session_destroy();
 	}
-
 	
 // WALKER FUNCTIONS
 public function insert_walker($create){

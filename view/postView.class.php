@@ -10,7 +10,10 @@ class PostView extends PostController{
 	public function sendPost(){
 		return $this->executePost();	
 	}
-	
+	public function allPostInAdminPanel(){
+		return $this->selectPostsInAdminPanel();
+	}
+
 	public function selectBlogPost(){
 		$num_per_page = 03;
 		if(isset($_GET["page"])){

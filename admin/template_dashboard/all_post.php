@@ -1,6 +1,6 @@
 <?php 
   $select = new PostView();
-  $loop = $select->selectBlogPost();
+  $loop = $select->allPostInAdminPanel();
   
 ?>
 <!-- First Photo Grid-->
@@ -15,7 +15,7 @@
       $posts->img_post; ?>" style="width:100%;height: 150px;" class="w3-hover-opacity">
       <div class="w3-container w3-white">
         <p style="text-align: center;"><b><?php echo $posts->name_post; ?></b></p>
-        <p><?php echo substr($posts->text_post,400); ?></p>
+        <p><?php echo substr($posts->text_post,0,50); ?></p>
         <a href="../../../php_projects/blog/admin/index.php?del_id=<?php echo $posts->post_id; ?>"><span class="glyphicon glyphicon-remove"></span></a>
         <a href="../../../php_projects/blog/admin/edit_post.php?edit_id=<?php echo $posts->post_id; ?>" style="float: right;"><span class="glyphicon glyphicon-wrench"></span></a>
       </div>
