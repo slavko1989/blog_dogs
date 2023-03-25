@@ -1,7 +1,0 @@
-This is a project about dogs. The project is a blog where users can read posts and leave comments. The blog is written in php language, in the oop system.
-Some functionalities of the project. Sign up and enter. Once users register, users can then leave comments on some posts, reply comments. Privilege to vote on posts.
-The vote is calculated based on the sum of all the votes, and gets the sum that I have shown in happy or sad smiley.
-When the user is logged in, a rating in the form of a star will be displayed on each post on which he voted The highest rating is five stars. Paginate is created.
-The entire logic of the project is in the admin panel that communicates with the database where all the data is stored. CRUD system for all data. 
-Users or guests can search for posts via categories or tags. And to search via live_ajax_bar.
-
