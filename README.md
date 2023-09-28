@@ -15,6 +15,11 @@ Slike kada je korisnik regostrovan ima pravo da glasa, na svakom postu ostaje ko
 a zbir svih glasanja sabira se i daje se srednja ocena za taj post. Naravno, clan sajta moze da pise i komenatre.
 <img width="960" alt="Screenshot 2023-09-16 101113" src="https://github.com/slavko1989/blog_dogs/assets/118732826/a556c7fb-f77e-4291-a769-fb608d658c1e">
 <img width="960" alt="Screenshot 2023-09-16 101242" src="https://github.com/slavko1989/blog_dogs/assets/118732826/749546e8-2749-4e42-bde3-fd76caf5a7b8">
+Admin panel
+<img width="960" alt="admin" src="https://github.com/slavko1989/blog_dogs/assets/118732826/30157bea-08b6-4260-9eea-49b8c3a68343">
+<img width="960" alt="admin2" src="https://github.com/slavko1989/blog_dogs/assets/118732826/3455537a-cc78-4b52-9a68-d4f6e4948248">
+
+
 
 
 
